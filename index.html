@@ -3,440 +3,267 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matheus Lobo Camara | Full Stack Developer</title>
+    <title>Matheus Lobo Camara | Desenvolvedor Full Stack</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
-        
-        :root {
-            --primary: #3b82f6;
-            --primary-dark: #2563eb;
-            --secondary: #1e40af;
-            --accent: #10b981;
-            --accent-dark: #059669;
-            --dark: #111827;
-            --darker: #0f172a;
-            --light: #f9fafb;
-            --lighter: #f8fafc;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--lighter);
-            color: var(--dark);
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-        
-        .section {
-            scroll-margin-top: 100px;
-        }
-        
         .gradient-text {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: linear-gradient(90deg, #0ea5e9, #0c4a6e);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+        .dark .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #7dd3fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
-        
-        .card-hover {
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-        
         .card-hover:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -38px;
-            top: 0;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--primary);
-            border: 4px solid var(--light);
-            z-index: 10;
+        .dark .card-hover:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
         }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: -29px;
-            top: 0;
-            height: 100%;
-            width: 2px;
-            background: var(--primary);
-        }
-        
-        .skill-bar {
-            height: 8px;
-            background-color: #e5e7eb;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 4px;
-            transition: width 1s ease-in-out;
-        }
-        
-        .nav-link {
+        .section-title {
             position: relative;
-            transition: all 0.3s ease;
+            display: inline-block;
         }
-        
-        .nav-link::after {
+        .section-title:after {
             content: '';
             position: absolute;
-            width: 0;
+            width: 50%;
             height: 3px;
             bottom: -5px;
             left: 0;
-            background-color: var(--primary);
-            transition: width 0.3s ease;
+            background: linear-gradient(90deg, #0ea5e9, #0c4a6e);
             border-radius: 3px;
         }
-        
-        .nav-link:hover::after {
+        .dark .section-title:after {
+            background: linear-gradient(90deg, #38bdf8, #7dd3fc);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #0ea5e9;
+            transition: width 0.3s ease;
+        }
+        .dark .nav-link:after {
+            background-color: #7dd3fc;
+        }
+        .nav-link:hover:after {
             width: 100%;
         }
-        
-        .active-nav::after {
-            width: 100%;
+        .active:after {
+            width: 100% !important;
         }
-        
-        .floating {
-            animation: floating 6s ease-in-out infinite;
+        .toggle-checkbox:checked {
+            right: 0;
+            background-color: #0ea5e9;
         }
-        
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
+        .dark .toggle-checkbox:checked {
+            background-color: #7dd3fc;
         }
-        
-        .tech-icon {
-            transition: all 0.3s ease;
+        .toggle-label {
+            cursor: pointer;
+            text-indent: -9999px;
+            width: 50px;
+            height: 25px;
+            background: grey;
+            display: block;
+            border-radius: 25px;
+            position: relative;
         }
-        
-        .tech-icon:hover {
-            transform: scale(1.2);
+        .toggle-label:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 21px;
+            height: 21px;
+            background: #fff;
+            border-radius: 21px;
+            transition: 0.3s;
         }
-        
-        .glow {
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        .toggle-checkbox:checked + .toggle-label:after {
+            left: calc(100% - 2px);
+            transform: translateX(-100%);
         }
-        
-        .parallax {
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .typewriter {
-            overflow: hidden;
-            border-right: 3px solid var(--primary);
-            white-space: nowrap;
-            margin: 0 auto;
-            letter-spacing: 0.15em;
-            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-        }
-        
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-        
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary) }
-        }
-        
-        .wave {
-            animation: wave 2s infinite;
-            transform-origin: 70% 70%;
-            display: inline-block;
-        }
-        
-        @keyframes wave {
-            0% { transform: rotate(0deg); }
-            10% { transform: rotate(14deg); }
-            20% { transform: rotate(-8deg); }
-            30% { transform: rotate(14deg); }
-            40% { transform: rotate(-4deg); }
-            50% { transform: rotate(10deg); }
-            60% { transform: rotate(0deg); }
-            100% { transform: rotate(0deg); }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .bg-pattern {
-            background-image: radial-gradient(rgba(59, 130, 246, 0.1) 2px, transparent 2px);
-            background-size: 40px 40px;
+        .toggle-label:active:after {
+            width: 28px;
         }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Navigation -->
-    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-md z-50">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="#" class="text-2xl font-bold flex items-center">
-                    <span class="gradient-text">ML</span>
-                    <span class="ml-2 hidden sm:inline-block">Matheus Lobo</span>
-                </a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="nav-link active-nav text-gray-800 font-medium">Home</a>
-                    <a href="#about" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Sobre</a>
-                    <a href="#experience" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Experiência</a>
-                    <a href="#projects" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Projetos</a>
-                    <a href="#contact" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Contato</a>
-                </div>
-                <button id="mobile-menu-button" class="md:hidden focus:outline-none">
-                    <i class="fas fa-bars text-gray-800 text-xl"></i>
-                </button>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Header & Navigation -->
+    <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold gradient-text">Matheus Lobo Camara</h1>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Desenvolvedor Full Stack</p>
             </div>
             
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4">
-                <div class="flex flex-col space-y-4">
-                    <a href="#home" class="nav-link active-nav text-gray-800 font-medium">Home</a>
-                    <a href="#about" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Sobre</a>
-                    <a href="#experience" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Experiência</a>
-                    <a href="#projects" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Projetos</a>
-                    <a href="#contact" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Contato</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="section min-h-screen flex items-center pt-20 bg-gradient-to-br from-blue-50 to-green-50">
-        <div class="container mx-auto px-6 py-16 md:py-24">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-12 md:mb-0" data-aos="fade-right">
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-                        Olá, eu sou <span class="gradient-text">Matheus Lobo</span> <span class="wave">👋</span>
-                    </h1>
-                    <h2 class="text-2xl md:text-3xl text-gray-600 mb-6">
-                        <span class="typewriter">Desenvolvedor Full Stack & IA</span>
-                    </h2>
-                    <p class="text-gray-600 mb-8 max-w-lg">
-                        Transformando ideias em realidade através de código limpo e soluções inovadoras. 
-                        Apaixonado por criar sistemas inteligentes que geram valor real.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#contact" class="gradient-bg hover:bg-gradient-to-r hover:from-blue-600 hover:to-green-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300 shadow-lg hover:shadow-xl">
-                            Contate-me <i class="fas fa-paper-plane ml-2"></i>
-                        </a>
-                        <a href="#projects" class="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition duration-300 shadow hover:shadow-md">
-                            Meus Projetos <i class="fas fa-arrow-down ml-2"></i>
-                        </a>
+            <div class="flex items-center space-x-6">
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link">Sobre</a>
+                    <a href="#skills" class="nav-link">Habilidades</a>
+                    <a href="#experience" class="nav-link">Experiência</a>
+                    <a href="#projects" class="nav-link">Projetos</a>
+                    <a href="#contact" class="nav-link">Contato</a>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="toggle" class="toggle-checkbox hidden">
+                        <label for="toggle" class="toggle-label block"></label>
                     </div>
-                    <div class="mt-8 flex space-x-6">
-                        <a href="https://github.com/LoboProgrammingg" target="_blank" class="text-gray-600 hover:text-blue-600 transition duration-300 text-2xl">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/matheus-lobo-camara-developer" target="_blank" class="text-gray-600 hover:text-blue-600 transition duration-300 text-2xl">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="mailto:matheusloboo2001@gmail.com" class="text-gray-600 hover:text-blue-600 transition duration-300 text-2xl">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://wa.me/61405378120" target="_blank" class="text-gray-600 hover:text-blue-600 transition duration-300 text-2xl">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
-                    <div class="relative">
-                        <div class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-blue-100 to-green-100 rounded-full overflow-hidden border-4 border-white shadow-2xl floating">
-                            <!-- Placeholder for profile image with pattern -->
-                            <div class="w-full h-full bg-pattern flex items-center justify-center">
-                                <div class="text-center p-6">
-                                    <i class="fas fa-code text-6xl text-blue-500 mb-4"></i>
-                                    <p class="text-blue-600 font-bold">Full Stack Developer</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="absolute -bottom-5 -right-5 bg-white p-4 rounded-lg shadow-lg glow">
-                            <div class="flex items-center">
-                                <div class="gradient-bg p-2 rounded-full mr-3">
-                                    <i class="fas fa-code text-white"></i>
-                                </div>
-                                <div>
-                                    <p class="font-bold">3+ Anos</p>
-                                    <p class="text-sm text-gray-500">Experiência</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="absolute -top-5 -left-5 bg-white p-3 rounded-full shadow-lg">
-                            <div class="gradient-bg p-2 rounded-full">
-                                <i class="fas fa-star text-white"></i>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    <button id="menu-btn" class="md:hidden focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
                 </div>
             </div>
         </div>
         
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
-            <a href="#about" class="animate-bounce block w-8 h-8 border-4 border-blue-500 rounded-full">
-                <span class="block w-2 h-2 bg-blue-500 rounded-full mt-2 mx-auto"></span>
-            </a>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#about" class="nav-link py-2">Sobre</a>
+                <a href="#skills" class="nav-link py-2">Habilidades</a>
+                <a href="#experience" class="nav-link py-2">Experiência</a>
+                <a href="#projects" class="nav-link py-2">Projetos</a>
+                <a href="#contact" class="nav-link py-2">Contato</a>
+                <div class="pt-2 border-t border-gray-200 dark:border-gray-700">
+                    <a href="#" class="inline-flex items-center justify-center w-full px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors">
+                        <i class="fas fa-download mr-2"></i> Baixar CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-r from-primary-50 to-primary-100 dark:from-gray-800 dark:to-gray-900">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Olá, eu sou <span class="gradient-text">Matheus Lobo Camara</span></h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-primary-700 dark:text-primary-400">Desenvolvedor Full Stack</h2>
+                <p class="text-lg mb-8 text-gray-700 dark:text-gray-300">Especializado em Python, JavaScript e Machine Learning, criando soluções inovadoras com tecnologias modernas.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="px-6 py-3 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors">
+                        <i class="fas fa-envelope mr-2"></i> Contate-me
+                    </a>
+                    <a href="#" class="px-6 py-3 border border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-md hover:bg-primary-50 dark:hover:bg-gray-800 transition-colors">
+                        <i class="fas fa-download mr-2"></i> Baixar CV
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary-200 dark:border-primary-800 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                         alt="Matheus Lobo Camara" 
+                         class="w-full h-full object-cover">
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="section py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Sobre <span class="gradient-text">Mim</span></h2>
-                <div class="w-20 h-1 gradient-bg mx-auto rounded-full"></div>
-            </div>
+    <section id="about" class="py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 section-title">Sobre Mim</h2>
             
-            <div class="flex flex-col lg:flex-row items-center">
-                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12" data-aos="fade-right">
-                    <h3 class="text-2xl font-bold mb-4">Minha Jornada</h3>
-                    <p class="text-gray-600 mb-6">
-                        Minha jornada na tecnologia começou em 2021 na Tel Telecomunicações, onde tive meu primeiro contato com análise de dados. 
-                        Desde então, venho me especializando em desenvolvimento Full Stack e Inteligência Artificial.
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-2/3">
+                    <p class="mb-6 text-lg text-gray-700 dark:text-gray-300">
+                        Desenvolvedor Full Stack com experiência desde 2021, começando na Tel Telecomunicações com análise de dados usando Excel, Pandas, NumPy, Matplotlib e Scikit-Learn.
                     </p>
-                    <p class="text-gray-600 mb-6">
-                        Em 2023, fiz um intercâmbio na Austrália onde aprimorei meu inglês e trabalhei com Node.js e Machine Learning. 
-                        Atualmente sou estagiário na MTI, desenvolvendo soluções inovadoras com IA.
+                    <p class="mb-6 text-lg text-gray-700 dark:text-gray-300">
+                        Em 2023, realizei um intercâmbio na Austrália (Sun Pacific College e Canterbury Technical Institute), onde adquiri experiência internacional e aprimorei minhas habilidades técnicas.
                     </p>
-                    <p class="text-gray-600 mb-8">
-                        Estou cursando Engenharia de Software e sou apaixonado por criar soluções que geram valor real através da tecnologia.
+                    <p class="mb-6 text-lg text-gray-700 dark:text-gray-300">
+                        Trabalhei na empresa INDUE com Node.js e Machine Learning para previsão de dados, e atualmente sou estagiário na MTI, com destaque em projetos com IA utilizando LangChain.
                     </p>
-                    <div class="flex space-x-4">
-                        <a href="Curriculo_atualizado_Matheus_Lobo_27-03-2025.pdf" class="gradient-bg hover:bg-gradient-to-r hover:from-blue-600 hover:to-green-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300 shadow-lg">
-                            Baixar CV <i class="fas fa-download ml-2"></i>
-                        </a>
-                        <a href="#experience" class="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition duration-300 shadow">
-                            Minha Experiência <i class="fas fa-briefcase ml-2"></i>
-                        </a>
-                    </div>
+                    <p class="mb-6 text-lg text-gray-700 dark:text-gray-300">
+                        Tenho grande interesse em continuar evoluindo como desenvolvedor, explorando novas tecnologias e criando soluções inovadoras.
+                    </p>
                 </div>
                 
-                <div class="lg:w-1/2" data-aos="fade-left">
-                    <h3 class="text-2xl font-bold mb-6">Minhas Habilidades</h3>
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">Python & Django</span>
-                                <span class="text-gray-600">90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">JavaScript & React</span>
-                                <span class="text-gray-600">85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">Machine Learning</span>
-                                <span class="text-gray-600">80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">Banco de Dados</span>
-                                <span class="text-gray-600">75%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-2">
-                                <span class="font-medium">Cloud & DevOps</span>
-                                <span class="text-gray-600">70%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 70%"></div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="md:w-1/3 bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4 text-primary-700 dark:text-primary-400">Informações Pessoais</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope text-primary-600 dark:text-primary-400 mt-1 mr-3"></i>
+                            <span>matheusloboo2001@gmail.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone text-primary-600 dark:text-primary-400 mt-1 mr-3"></i>
+                            <span>+55 (65) 99254-0370</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fab fa-whatsapp text-primary-600 dark:text-primary-400 mt-1 mr-3"></i>
+                            <span>+61 405 378 120</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fab fa-linkedin text-primary-600 dark:text-primary-400 mt-1 mr-3"></i>
+                            <a href="https://www.linkedin.com/in/matheus-lobo-camara-developer" target="_blank" class="hover:underline">linkedin.com/in/matheus-lobo-camara-developer</a>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fab fa-github text-primary-600 dark:text-primary-400 mt-1 mr-3"></i>
+                            <a href="https://github.com/LoboProgrammingg" target="_blank" class="hover:underline">github.com/LoboProgrammingg</a>
+                        </li>
+                    </ul>
                     
-                    <h3 class="text-2xl font-bold mt-12 mb-6">Tecnologias</h3>
-                    <div class="grid grid-cols-4 md:grid-cols-6 gap-4">
-                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="Python">
-                            <i class="fab fa-python text-3xl text-blue-600"></i>
+                    <h3 class="text-xl font-semibold mt-6 mb-4 text-primary-700 dark:text-primary-400">Idiomas</h3>
+                    <div class="space-y-2">
+                        <div>
+                            <span class="font-medium">Português</span>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-primary-600 dark:bg-primary-400 h-2 rounded-full" style="width: 100%"></div>
+                            </div>
                         </div>
-                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="JavaScript">
-                            <i class="fab fa-js text-3xl text-yellow-500"></i>
+                        <div>
+                            <span class="font-medium">Inglês</span>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-primary-600 dark:bg-primary-400 h-2 rounded-full" style="width: 80%"></div>
+                            </div>
                         </div>
-                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="Django">
-                            <i class="fab fa-python text-3xl text-green-600"></i>
-                        </div>
-                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="React">
-                            <i class="fab fa-react text-3xl text-blue-400"></i>
-                        </div>
-                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="Node.js">
-                            <i class="fab fa-node-js text-3xl text-green-500"></i>
-                        </div>
-                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="Git">
-                            <i class="fab fa-git-alt text-3xl text-orange-600"></i>
-                        </div>
-                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="AWS">
-                            <i class="fab fa-aws text-3xl text-orange-700"></i>
-                        </div>
-                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="Docker">
-                            <i class="fab fa-docker text-3xl text-blue-500"></i>
-                        </div>
-                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="Linux">
-                            <i class="fab fa-linux text-3xl text-black"></i>
-                        </div>
-                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="HTML5">
-                            <i class="fab fa-html5 text-3xl text-orange-500"></i>
-                        </div>
-                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="CSS3">
-                            <i class="fab fa-css3-alt text-3xl text-blue-500"></i>
-                        </div>
-                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="AI">
-                            <i class="fas fa-robot text-3xl text-purple-600"></i>
+                        <div>
+                            <span class="font-medium">Espanhol</span>
+                            <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                                <div class="bg-primary-600 dark:bg-primary-400 h-2 rounded-full" style="width: 60%"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -444,515 +271,532 @@
         </div>
     </section>
 
-    <!-- Experience & Education Section -->
-    <section id="experience" class="section py-20 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Experiência <span class="gradient-text">&</span> Educação</h2>
-                <div class="w-20 h-1 gradient-bg mx-auto rounded-full"></div>
-            </div>
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 section-title">Habilidades Técnicas</h2>
             
-            <div class="flex flex-col lg:flex-row">
-                <!-- Experience -->
-                <div class="lg:w-1/2 lg:pr-8 mb-12 lg:mb-0">
-                    <h3 class="text-2xl font-bold mb-8 flex items-center" data-aos="fade-right">
-                        <i class="fas fa-briefcase mr-3 text-blue-600"></i> Experiência Profissional
-                    </h3>
-                    
-                    <div class="relative pl-12 timeline">
-                        <!-- MTI -->
-                        <div class="relative mb-8 timeline-item" data-aos="fade-up">
-                            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
-                                <div class="flex justify-between items-start mb-2">
-                                    <h4 class="font-bold text-lg">MTI - Estagiário</h4>
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Atual</span>
-                                </div>
-                                <span class="text-gray-600 text-sm">Out 2024 - Presente</span>
-                                <ul class="mt-4 space-y-2 text-gray-600">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
-                                        <span>Desenvolvimento de layouts Canva</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
-                                        <span>Otimização de processos Google</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
-                                        <span>Implementação de IA para análise de documentos</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
-                                        <span>Desenvolvimento de aplicativos mobile</span>
-                                    </li>
-                                </ul>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Python</span>
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Django</span>
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">IA</span>
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">LangChain</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- INDUE -->
-                        <div class="relative mb-8 timeline-item" data-aos="fade-up">
-                            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
-                                <h4 class="font-bold text-lg mb-2">INDUE - Trainee</h4>
-                                <span class="text-gray-600 text-sm">Mar 2023 - Set 2023</span>
-                                <ul class="mt-4 space-y-2 text-gray-600">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
-                                        <span>Machine Learning para previsão de dados</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
-                                        <span>Pandas para leitura de dados</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
-                                        <span>Desenvolvimento com Node.js</span>
-                                    </li>
-                                </ul>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Node.js</span>
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Python</span>
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Pandas</span>
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Machine Learning</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Tel Telecom -->
-                        <div class="relative timeline-item" data-aos="fade-up">
-                            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
-                                <h4 class="font-bold text-lg mb-2">Tel Telecomunicações - Estagiário</h4>
-                                <span class="text-gray-600 text-sm">Jan 2021 - Dez 2021</span>
-                                <ul class="mt-4 space-y-2 text-gray-600">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
-                                        <span>Análise de dados com Pandas, NumPy e Matplotlib</span>
-                                    </li>
-                                    <li class="flex items-start">
-                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
-                                        <span>Otimização de processos e tomada de decisões</span>
-                                    </li>
-                                </ul>
-                                <div class="mt-4 flex flex-wrap gap-2">
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Python</span>
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Pandas</span>
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">NumPy</span>
-                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Data Analysis</span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Languages -->
+                <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm card-hover transition-transform duration-300">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-code text-2xl text-primary-600 dark:text-primary-400 mr-3"></i>
+                        <h3 class="text-xl font-semibold">Linguagens</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fab fa-python text-lg text-blue-500 mr-2"></i>
+                            <span>Python</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-js text-lg text-yellow-500 mr-2"></i>
+                            <span>JavaScript</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-html5 text-lg text-orange-500 mr-2"></i>
+                            <span>HTML5</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-css3-alt text-lg text-blue-400 mr-2"></i>
+                            <span>CSS3</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Frameworks -->
+                <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm card-hover transition-transform duration-300">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-layer-group text-2xl text-primary-600 dark:text-primary-400 mr-3"></i>
+                        <h3 class="text-xl font-semibold">Frameworks</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fab fa-python text-lg text-green-700 mr-2"></i>
+                            <span>Django</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-node-js text-lg text-green-500 mr-2"></i>
+                            <span>Node.js</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-react text-lg text-blue-400 mr-2"></i>
+                            <span>React</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-brain text-lg text-purple-500 mr-2"></i>
+                            <span>LangChain</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Databases -->
+                <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm card-hover transition-transform duration-300">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-database text-2xl text-primary-600 dark:text-primary-400 mr-3"></i>
+                        <h3 class="text-xl font-semibold">Banco de Dados</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-database text-lg text-blue-600 mr-2"></i>
+                            <span>SQL</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-server text-lg text-blue-700 mr-2"></i>
+                            <span>PostgreSQL</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-database text-lg text-orange-500 mr-2"></i>
+                            <span>MySQL</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Tools -->
+                <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm card-hover transition-transform duration-300">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-tools text-2xl text-primary-600 dark:text-primary-400 mr-3"></i>
+                        <h3 class="text-xl font-semibold">Ferramentas</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fab fa-docker text-lg text-blue-500 mr-2"></i>
+                            <span>Docker</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-git-alt text-lg text-orange-600 mr-2"></i>
+                            <span>Git</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-google text-lg text-blue-500 mr-2"></i>
+                            <span>GCP</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fab fa-aws text-lg text-orange-700 mr-2"></i>
+                            <span>AWS</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- ML/AI -->
+                <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm card-hover transition-transform duration-300">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-robot text-2xl text-primary-600 dark:text-primary-400 mr-3"></i>
+                        <h3 class="text-xl font-semibold">Machine Learning</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-chart-line text-lg text-purple-500 mr-2"></i>
+                            <span>Scikit-Learn</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-brain text-lg text-yellow-500 mr-2"></i>
+                            <span>TensorFlow</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-project-diagram text-lg text-green-500 mr-2"></i>
+                            <span>Neural Networks</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-chart-bar text-lg text-blue-500 mr-2"></i>
+                            <span>Pandas/NumPy</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Other -->
+                <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-sm card-hover transition-transform duration-300">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-plus-circle text-2xl text-primary-600 dark:text-primary-400 mr-3"></i>
+                        <h3 class="text-xl font-semibold">Outras</h3>
+                    </div>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fab fa-linux text-lg text-black dark:text-white mr-2"></i>
+                            <span>Linux</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-terminal text-lg text-gray-600 dark:text-gray-300 mr-2"></i>
+                            <span>CLI</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-mobile-alt text-lg text-blue-500 mr-2"></i>
+                            <span>Mobile Apps</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-cloud text-lg text-blue-400 mr-2"></i>
+                            <span>Cloud Computing</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 section-title">Experiência Profissional</h2>
+            
+            <div class="space-y-8">
+                <!-- MTI -->
+                <div class="flex flex-col md:flex-row gap-6 bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm card-hover transition-transform duration-300">
+                    <div class="md:w-1/4">
+                        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-400">MTI</h3>
+                        <p class="text-gray-600 dark:text-gray-400">2023 - Presente</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-500">Estagiário</p>
+                    </div>
+                    <div class="md:w-3/4">
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                            <li>Desenvolvimento de soluções com IA utilizando LangChain</li>
+                            <li>Criação de aplicativos mobile para automação de processos</li>
+                            <li>Implementação de automações com Google Workspace</li>
+                            <li>Integração de sistemas com APIs modernas</li>
+                        </ul>
                     </div>
                 </div>
                 
-                <!-- Education -->
-                <div class="lg:w-1/2 lg:pl-8">
-                    <h3 class="text-2xl font-bold mb-8 flex items-center" data-aos="fade-left">
-                        <i class="fas fa-graduation-cap mr-3 text-blue-600"></i> Educação
-                    </h3>
-                    
-                    <div class="relative pl-12 timeline">
-                        <!-- Ampli -->
-                        <div class="relative mb-8 timeline-item" data-aos="fade-up">
-                            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
-                                <h4 class="font-bold text-lg mb-2">Engenharia de Software</h4>
-                                <span class="text-gray-600 text-sm">Ampli - Cuiabá-MT</span>
-                                <p class="text-gray-600 mt-2">Conclusão prevista para 2027</p>
-                                <div class="mt-4 flex items-center">
-                                    <i class="fas fa-calendar-alt text-blue-500 mr-2"></i>
-                                    <span class="text-sm text-gray-600">2023 - 2027</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Canterbury -->
-                        <div class="relative mb-8 timeline-item" data-aos="fade-up">
-                            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
-                                <h4 class="font-bold text-lg mb-2">Advanced Programming</h4>
-                                <span class="text-gray-600 text-sm">Canterbury Technical Institute - Brisbane, Austrália</span>
-                                <p class="text-gray-600 mt-2">2023 (Não Finalizado)</p>
-                                <div class="mt-4 flex items-center">
-                                    <i class="fas fa-globe-americas text-blue-500 mr-2"></i>
-                                    <span class="text-sm text-gray-600">Intercâmbio</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Sun Pacific -->
-                        <div class="relative timeline-item" data-aos="fade-up">
-                            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
-                                <h4 class="font-bold text-lg mb-2">Inglês - Upper-Intermediate</h4>
-                                <span class="text-gray-600 text-sm">Sun Pacific College - Brisbane, Austrália</span>
-                                <p class="text-gray-600 mt-2">2023</p>
-                                <div class="mt-4 flex items-center">
-                                    <i class="fas fa-language text-blue-500 mr-2"></i>
-                                    <span class="text-sm text-gray-600">Inglês Avançado</span>
-                                </div>
-                            </div>
-                        </div>
+                <!-- INDUE -->
+                <div class="flex flex-col md:flex-row gap-6 bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm card-hover transition-transform duration-300">
+                    <div class="md:w-1/4">
+                        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-400">INDUE</h3>
+                        <p class="text-gray-600 dark:text-gray-400">2023</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-500">Desenvolvedor</p>
                     </div>
-                    
-                    <!-- Certifications -->
-                    <h3 class="text-2xl font-bold mt-12 mb-8 flex items-center" data-aos="fade-left">
-                        <i class="fas fa-certificate mr-3 text-blue-600"></i> Certificados
-                    </h3>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" data-aos="fade-up">
-                        <div class="bg-white p-4 rounded-lg shadow-md card-hover">
-                            <div class="flex items-start">
-                                <div class="bg-blue-100 p-2 rounded-full mr-3">
-                                    <i class="fas fa-university text-blue-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold mb-2">HarvardX</h4>
-                                    <ul class="text-sm text-gray-600 space-y-1">
-                                        <li>• CS50AI: AI with Python</li>
-                                        <li>• CS50x: Computer Science</li>
-                                        <li>• CS109xa: Machine Learning</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-md card-hover">
-                            <div class="flex items-start">
-                                <div class="bg-green-100 p-2 rounded-full mr-3">
-                                    <i class="fas fa-robot text-green-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold mb-2">Asimov</h4>
-                                    <ul class="text-sm text-gray-600 space-y-1">
-                                        <li>• Agents de IA com LangChain</li>
-                                        <li>• Engenharia de Prompts</li>
-                                        <li>• LLMs alternativas</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-md card-hover">
-                            <div class="flex items-start">
-                                <div class="bg-yellow-100 p-2 rounded-full mr-3">
-                                    <i class="fas fa-graduation-cap text-yellow-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold mb-2">Udemy</h4>
-                                    <ul class="text-sm text-gray-600 space-y-1">
-                                        <li>• Python 3 do básico ao avançado</li>
-                                        <li>• 100 days of code</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-white p-4 rounded-lg shadow-md card-hover">
-                            <div class="flex items-start">
-                                <div class="bg-purple-100 p-2 rounded-full mr-3">
-                                    <i class="fas fa-certificate text-purple-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold mb-2">Outros</h4>
-                                    <ul class="text-sm text-gray-600 space-y-1">
-                                        <li>• IA Master (Kiwify)</li>
-                                        <li>• Django Master (Kiwify)</li>
-                                        <li>• Data Visualization (IBM)</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="md:w-3/4">
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                            <li>Desenvolvimento de modelos de Machine Learning com Node.js</li>
+                            <li>Previsão de dados financeiros usando algoritmos de IA</li>
+                            <li>Integração de sistemas bancários com APIs seguras</li>
+                            <li>Otimização de processos de análise de dados</li>
+                        </ul>
                     </div>
+                </div>
+                
+                <!-- Tel Telecom -->
+                <div class="flex flex-col md:flex-row gap-6 bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm card-hover transition-transform duration-300">
+                    <div class="md:w-1/4">
+                        <h3 class="text-xl font-semibold text-primary-700 dark:text-primary-400">Tel Telecomunicações</h3>
+                        <p class="text-gray-600 dark:text-gray-400">2021 - 2023</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-500">Estagiário</p>
+                    </div>
+                    <div class="md:w-3/4">
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
+                            <li>Análise de dados com Excel, Pandas, NumPy e Matplotlib</li>
+                            <li>Desenvolvimento de modelos preditivos com Scikit-Learn</li>
+                            <li>Automatização de relatórios e dashboards</li>
+                            <li>Processamento e limpeza de grandes conjuntos de dados</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Education -->
+            <h3 class="text-2xl font-bold mt-16 mb-8 section-title">Formação Acadêmica</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Engenharia de Software -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm card-hover transition-transform duration-300">
+                    <h4 class="text-lg font-semibold text-primary-700 dark:text-primary-400">Engenharia de Software</h4>
+                    <p class="text-gray-600 dark:text-gray-400">Ampli</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-500">2023 - 2027 (Previsão)</p>
+                    <p class="mt-3 text-gray-700 dark:text-gray-300">Formação completa em engenharia de software com foco em desenvolvimento de sistemas escaláveis e arquitetura de software.</p>
+                </div>
+                
+                <!-- Advanced Programming -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg shadow-sm card-hover transition-transform duration-300">
+                    <h4 class="text-lg font-semibold text-primary-700 dark:text-primary-400">Advanced Programming</h4>
+                    <p class="text-gray-600 dark:text-gray-400">Canterbury Technical Institute</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-500">2023 (Não finalizado)</p>
+                    <p class="mt-3 text-gray-700 dark:text-gray-300">Curso avançado de programação durante intercâmbio na Austrália, com ênfase em desenvolvimento web e mobile.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Meus <span class="gradient-text">Projetos</span></h2>
-                <div class="w-20 h-1 gradient-bg mx-auto rounded-full"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto mt-4">
-                    Alguns dos projetos que desenvolvi, combinando criatividade, tecnologia e boas práticas de desenvolvimento.
-                </p>
+    <section id="projects" class="py-16 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 section-title">Projetos Publicados</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Sistema de Gestão de Estoque -->
+                <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md card-hover transition-transform duration-300">
+                    <div class="h-48 overflow-hidden rounded-t-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Sistema de Gestão de Estoque" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Sistema de Gestão de Estoque (Desktop)</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Sistema completo para gerenciamento de estoque com interface intuitiva e relatórios detalhados.</p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-300 mr-2">Django</span>
+                        <span class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-300 mr-2">PostgreSQL</span>
+                        <span class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-300">Bootstrap</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="https://matheusprogrammer.pythonanywhere.com/" 
+                           target="_blank" 
+                           class="px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors text-sm">
+                            <i class="fas fa-external-link-alt mr-1"></i> Visitar Projeto
+                        </a>
+                        <div class="text-sm text-gray-600 dark:text-gray-400 flex items-center">
+                            <i class="fas fa-user mr-1"></i> lobo
+                            <i class="fas fa-key ml-3 mr-1"></i> sarutobi12
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sistema de Venda de Carros -->
+                <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md card-hover transition-transform duration-300">
+                    <div class="h-48 overflow-hidden rounded-t-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Sistema de Venda de Carros" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Sistema de Venda de Carros (Mobile)</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Aplicativo mobile para gestão de concessionária de veículos com cadastro de clientes e veículos.</p>
+                    <div class="mb-4">
+                        <span class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-300 mr-2">React Native</span>
+                        <span class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-300 mr-2">Node.js</span>
+                        <span class="inline-block bg-gray-200 dark:bg-gray-700 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 dark:text-gray-300">MongoDB</span>
+                    </div>
+                    <a href="https://matheuslobocamara.pythonanywhere.com/" 
+                       target="_blank" 
+                       class="inline-block px-4 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors text-sm">
+                        <i class="fas fa-external-link-alt mr-1"></i> Visitar Projeto
+                    </a>
+                </div>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- SGE -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100" data-aos="zoom-in">
-                    <div class="h-48 bg-gradient-to-r from-blue-100 to-blue-200 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-blue-500 opacity-10"></div>
-                        <div class="relative z-10 text-center p-4">
-                            <i class="fas fa-boxes text-6xl text-blue-600 mb-4"></i>
-                            <h3 class="text-xl font-bold text-blue-800">Sistema de Gestão</h3>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-blue-500"></div>
+            <!-- More Projects Button -->
+            <div class="text-center mt-12">
+                <a href="https://github.com/LoboProgrammingg" 
+                   target="_blank" 
+                   class="inline-flex items-center px-6 py-3 border border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-md hover:bg-primary-50 dark:hover:bg-gray-700 transition-colors">
+                    <i class="fab fa-github mr-2"></i> Ver mais projetos no GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="py-16 bg-white dark:bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 section-title">Certificados</h2>
+            
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                <!-- CS50 -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center card-hover transition-transform duration-300">
+                    <div class="h-16 mb-3 flex justify-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Harvard_University_logo.svg/1200px-Harvard_University_logo.svg.png" 
+                             alt="Harvard" 
+                             class="h-full object-contain">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Sistema de Gestão de Estoque</h3>
-                        <p class="text-gray-600 mb-4">
-                            Sistema completo para controle de vendas com dashboards e automações.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Django</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Python</span>
-                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Bootstrap</span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <a href="https://matheusprogrammer.pythonanywhere.com/" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
-                                Ver Projeto <i class="fas fa-external-link-alt ml-2"></i>
-                            </a>
-                            <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
-                                lobo / sarutobi12
-                            </span>
-                        </div>
-                    </div>
+                    <h3 class="font-semibold text-primary-700 dark:text-primary-400">CS50</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Harvard University</p>
                 </div>
                 
-                <!-- Car Sales -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="h-48 bg-gradient-to-r from-green-100 to-green-200 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-green-500 opacity-10"></div>
-                        <div class="relative z-10 text-center p-4">
-                            <i class="fas fa-car text-6xl text-green-600 mb-4"></i>
-                            <h3 class="text-xl font-bold text-green-800">Venda de Carros</h3>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-green-500"></div>
+                <!-- Asimov -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center card-hover transition-transform duration-300">
+                    <div class="h-16 mb-3 flex justify-center">
+                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" 
+                             alt="Asimov" 
+                             class="h-full object-contain">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Sistema de Venda de Carros</h3>
-                        <p class="text-gray-600 mb-4">
-                            Plataforma com IA para gerar descrições automáticas de veículos.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Django</span>
-                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">AI</span>
-                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Mobile</span>
-                        </div>
-                        <a href="https://matheuslobocamara.pythonanywhere.com/" target="_blank" class="text-green-600 hover:text-green-800 font-medium flex items-center">
-                            Ver Projeto <i class="fas fa-external-link-alt ml-2"></i>
-                        </a>
-                    </div>
+                    <h3 class="font-semibold text-primary-700 dark:text-primary-400">Inteligência Artificial</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Asimov Academy</p>
                 </div>
                 
-                <!-- MTI AI -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="h-48 bg-gradient-to-r from-purple-100 to-purple-200 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-purple-500 opacity-10"></div>
-                        <div class="relative z-10 text-center p-4">
-                            <i class="fas fa-robot text-6xl text-purple-600 mb-4"></i>
-                            <h3 class="text-xl font-bold text-purple-800">IA para Treinamento</h3>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-purple-500"></div>
+                <!-- Udemy -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center card-hover transition-transform duration-300">
+                    <div class="h-16 mb-3 flex justify-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Udemy_logo.svg/1200px-Udemy_logo.svg.png" 
+                             alt="Udemy" 
+                             class="h-full object-contain">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">IA para Treinamento (MTI)</h3>
-                        <p class="text-gray-600 mb-4">
-                            Assistente de IA baseado em fine-tuning para treinar novos funcionários.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">LangChain</span>
-                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Python</span>
-                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">LLM</span>
-                        </div>
-                        <p class="text-sm text-gray-500 italic">
-                            Projeto interno da MTI (demonstração sob consulta)
-                        </p>
-                    </div>
+                    <h3 class="font-semibold text-primary-700 dark:text-primary-400">Django Avançado</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Udemy</p>
                 </div>
                 
-                <!-- More Projects -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100" data-aos="zoom-in">
-                    <div class="h-48 bg-gradient-to-r from-yellow-100 to-yellow-200 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-yellow-500 opacity-10"></div>
-                        <div class="relative z-10 text-center p-4">
-                            <i class="fab fa-github text-6xl text-yellow-600 mb-4"></i>
-                            <h3 class="text-xl font-bold text-yellow-800">Mais Projetos</h3>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-yellow-500"></div>
+                <!-- Alura -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center card-hover transition-transform duration-300">
+                    <div class="h-16 mb-3 flex justify-center">
+                        <img src="https://www.alura.com.br/assets/img/home/alura-logo.1570550707.svg" 
+                             alt="Alura" 
+                             class="h-full object-contain">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Mais Projetos no GitHub</h3>
-                        <p class="text-gray-600 mb-4">
-                            Explore outros projetos no meu repositório GitHub.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">Python</span>
-                            <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">JavaScript</span>
-                            <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">Diversos</span>
-                        </div>
-                        <a href="https://github.com/LoboProgrammingg" target="_blank" class="text-yellow-600 hover:text-yellow-800 font-medium flex items-center">
-                            Visitar GitHub <i class="fas fa-external-link-alt ml-2"></i>
-                        </a>
-                    </div>
+                    <h3 class="font-semibold text-primary-700 dark:text-primary-400">Python para Data Science</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Alura</p>
                 </div>
                 
-                <!-- AI Projects -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="h-48 bg-gradient-to-r from-pink-100 to-pink-200 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-pink-500 opacity-10"></div>
-                        <div class="relative z-10 text-center p-4">
-                            <i class="fas fa-brain text-6xl text-pink-600 mb-4"></i>
-                            <h3 class="text-xl font-bold text-pink-800">Projetos de IA</h3>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-pink-500"></div>
+                <!-- IBM -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center card-hover transition-transform duration-300">
+                    <div class="h-16 mb-3 flex justify-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1200px-IBM_logo.svg.png" 
+                             alt="IBM" 
+                             class="h-full object-contain">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Projetos de Inteligência Artificial</h3>
-                        <p class="text-gray-600 mb-4">
-                            Diversos projetos envolvendo Machine Learning e LLMs.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full">Python</span>
-                            <span class="bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full">TensorFlow</span>
-                            <span class="bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full">LLMs</span>
-                        </div>
-                        <a href="https://github.com/LoboProgrammingg?tab=repositories" target="_blank" class="text-pink-600 hover:text-pink-800 font-medium flex items-center">
-                            Ver Projetos <i class="fas fa-external-link-alt ml-2"></i>
-                        </a>
+                    <h3 class="font-semibold text-primary-700 dark:text-primary-400">Cloud Computing</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">IBM</p>
+                </div>
+            </div>
+            
+            <!-- View All Button -->
+            <div class="text-center mt-12">
+                <button id="toggle-certificates" class="inline-flex items-center px-6 py-3 border border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 rounded-md hover:bg-primary-50 dark:hover:bg-gray-700 transition-colors">
+                    <i class="fas fa-certificate mr-2"></i> Ver todos os certificados
+                </button>
+            </div>
+            
+            <!-- Additional Certificates (Hidden by default) -->
+            <div id="additional-certificates" class="hidden mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+                <!-- OpenAI -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center card-hover transition-transform duration-300">
+                    <div class="h-16 mb-3 flex justify-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/OpenAI_Logo.svg/1200px-OpenAI_Logo.svg.png" 
+                             alt="OpenAI" 
+                             class="h-full object-contain">
                     </div>
+                    <h3 class="font-semibold text-primary-700 dark:text-primary-400">OpenAI API</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">OpenAI</p>
                 </div>
                 
-                <!-- Coming Soon -->
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="h-48 bg-gradient-to-r from-indigo-100 to-indigo-200 flex items-center justify-center relative overflow-hidden">
-                        <div class="absolute inset-0 bg-indigo-500 opacity-10"></div>
-                        <div class="relative z-10 text-center p-4">
-                            <i class="fas fa-lightbulb text-6xl text-indigo-600 mb-4"></i>
-                            <h3 class="text-xl font-bold text-indigo-800">Novos Projetos</h3>
-                        </div>
-                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-indigo-500"></div>
+                <!-- LangChain -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center card-hover transition-transform duration-300">
+                    <div class="h-16 mb-3 flex justify-center">
+                        <img src="https://langchain-docs-7b3a8.web.app/img/brand/wordmark.png" 
+                             alt="LangChain" 
+                             class="h-full object-contain">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Em Desenvolvimento</h3>
-                        <p class="text-gray-600 mb-4">
-                            Novos projetos estão sendo desenvolvidos e em breve estarão disponíveis.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">React</span>
-                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Node.js</span>
-                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Next.js</span>
-                        </div>
-                        <p class="text-sm text-gray-500 italic">
-                            Em breve mais novidades!
-                        </p>
+                    <h3 class="font-semibold text-primary-700 dark:text-primary-400">LangChain</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">LangChain</p>
+                </div>
+                
+                <!-- Google Cloud -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center card-hover transition-transform duration-300">
+                    <div class="h-16 mb-3 flex justify-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Google_Cloud_logo.svg/1200px-Google_Cloud_logo.svg.png" 
+                             alt="Google Cloud" 
+                             class="h-full object-contain">
                     </div>
+                    <h3 class="font-semibold text-primary-700 dark:text-primary-400">GCP Essentials</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Google Cloud</p>
+                </div>
+                
+                <!-- AWS -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center card-hover transition-transform duration-300">
+                    <div class="h-16 mb-3 flex justify-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/1200px-Amazon_Web_Services_Logo.svg.png" 
+                             alt="AWS" 
+                             class="h-full object-contain">
+                    </div>
+                    <h3 class="font-semibold text-primary-700 dark:text-primary-400">AWS Fundamentals</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Amazon Web Services</p>
+                </div>
+                
+                <!-- Docker -->
+                <div class="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-sm text-center card-hover transition-transform duration-300">
+                    <div class="h-16 mb-3 flex justify-center">
+                        <img src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png" 
+                             alt="Docker" 
+                             class="h-full object-contain">
+                    </div>
+                    <h3 class="font-semibold text-primary-700 dark:text-primary-400">Docker & Kubernetes</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-400">Docker Inc.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section py-20 bg-gradient-to-br from-blue-50 to-green-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Entre em <span class="gradient-text">Contato</span></h2>
-                <div class="w-20 h-1 gradient-bg mx-auto rounded-full"></div>
-                <p class="text-gray-600 max-w-2xl mx-auto mt-4">
-                    Estou disponível para oportunidades de trabalho, projetos freelancer ou apenas para bater um papo sobre tecnologia!
-                </p>
-            </div>
+    <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 section-title">Contato</h2>
             
-            <div class="flex flex-col lg:flex-row bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up">
-                <div class="lg:w-1/2 p-8 md:p-12 bg-gradient-to-br from-blue-500 to-green-500 text-white">
-                    <h3 class="text-2xl font-bold mb-6">Informações de Contato</h3>
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2">
+                    <h3 class="text-xl font-semibold mb-6 text-primary-700 dark:text-primary-400">Entre em contato</h3>
                     
-                    <div class="space-y-6">
-                        <div class="flex items-start glass p-4 rounded-lg">
-                            <div class="bg-white/20 p-3 rounded-full mr-4">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-1">E-mail</h4>
-                                <a href="mailto:matheusloboo2001@gmail.com" class="hover:underline">matheusloboo2001@gmail.com</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start glass p-4 rounded-lg">
-                            <div class="bg-white/20 p-3 rounded-full mr-4">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-1">Telefone</h4>
-                                <a href="tel:+5565992540370" class="hover:underline">+55 (65) 99254-0370</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start glass p-4 rounded-lg">
-                            <div class="bg-white/20 p-3 rounded-full mr-4">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-1">WhatsApp</h4>
-                                <a href="https://wa.me/61405378120" target="_blank" class="hover:underline">+61 405 378 120</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start glass p-4 rounded-lg">
-                            <div class="bg-white/20 p-3 rounded-full mr-4">
-                                <i class="fab fa-linkedin"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-1">LinkedIn</h4>
-                                <a href="https://www.linkedin.com/in/matheus-lobo-camara-developer" target="_blank" class="hover:underline">linkedin.com/in/matheus-lobo-camara-developer</a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start glass p-4 rounded-lg">
-                            <div class="bg-white/20 p-3 rounded-full mr-4">
-                                <i class="fab fa-github"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold mb-1">GitHub</h4>
-                                <a href="https://github.com/LoboProgrammingg" target="_blank" class="hover:underline">github.com/LoboProgrammingg</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-8">
-                        <h4 class="font-bold mb-4">Disponibilidade</h4>
-                        <div class="flex items-center">
-                            <div class="h-3 w-3 bg-green-400 rounded-full mr-2"></div>
-                            <span>Disponível para novas oportunidades</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="lg:w-1/2 p-8 md:p-12">
-                    <h3 class="text-2xl font-bold mb-6">Envie uma Mensagem</h3>
-                    <form id="contact-form" class="space-y-4">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
-                                <label for="name" class="block text-gray-700 font-medium mb-2">Nome</label>
-                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
-                            </div>
-                            <div>
-                                <label for="email" class="block text-gray-700 font-medium mb-2">E-mail</label>
-                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
-                            </div>
-                        </div>
+                    <form class="space-y-4">
                         <div>
-                            <label for="subject" class="block text-gray-700 font-medium mb-2">Assunto</label>
-                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nome</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
                         </div>
+                        
                         <div>
-                            <label for="message" class="block text-gray-700 font-medium mb-2">Mensagem</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required></textarea>
+                            <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">E-mail</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
                         </div>
-                        <button type="submit" class="gradient-bg hover:bg-gradient-to-r hover:from-blue-600 hover:to-green-600 text-white px-6 py-3 rounded-lg font-medium w-full transition duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
-                            <span id="submit-text">Enviar Mensagem</span>
-                            <i id="submit-icon" class="fas fa-paper-plane ml-2"></i>
-                            <i id="loading-icon" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Assunto</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Mensagem</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="px-6 py-3 bg-primary-600 text-white rounded-md hover:bg-primary-700 transition-colors">
+                            <i class="fas fa-paper-plane mr-2"></i> Enviar Mensagem
                         </button>
                     </form>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <h3 class="text-xl font-semibold mb-6 text-primary-700 dark:text-primary-400">Outras formas de contato</h3>
                     
-                    <div id="success-message" class="hidden mt-4 p-4 bg-green-100 text-green-800 rounded-lg">
-                        <i class="fas fa-check-circle mr-2"></i> Mensagem enviada com sucesso! Entrarei em contato em breve.
-                    </div>
-                    
-                    <div id="error-message" class="hidden mt-4 p-4 bg-red-100 text-red-800 rounded-lg">
-                        <i class="fas fa-exclamation-circle mr-2"></i> Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-primary-100 dark:bg-primary-900 p-3 rounded-full">
+                                <i class="fas fa-envelope text-primary-600 dark:text-primary-400 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">E-mail</h4>
+                                <a href="mailto:matheusloboo2001@gmail.com" class="text-gray-700 dark:text-gray-300 hover:underline">matheusloboo2001@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-primary-100 dark:bg-primary-900 p-3 rounded-full">
+                                <i class="fas fa-phone text-primary-600 dark:text-primary-400 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">Telefone</h4>
+                                <p class="text-gray-700 dark:text-gray-300">+55 (65) 99254-0370</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-primary-100 dark:bg-primary-900 p-3 rounded-full">
+                                <i class="fab fa-whatsapp text-primary-600 dark:text-primary-400 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">WhatsApp</h4>
+                                <p class="text-gray-700 dark:text-gray-300">+61 405 378 120</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-primary-100 dark:bg-primary-900 p-3 rounded-full">
+                                <i class="fab fa-linkedin-in text-primary-600 dark:text-primary-400 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/matheus-lobo-camara-developer" target="_blank" class="text-gray-700 dark:text-gray-300 hover:underline">linkedin.com/in/matheus-lobo-camara-developer</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-primary-100 dark:bg-primary-900 p-3 rounded-full">
+                                <i class="fab fa-github text-primary-600 dark:text-primary-400 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium">GitHub</h4>
+                                <a href="https://github.com/LoboProgrammingg" target="_blank" class="text-gray-700 dark:text-gray-300 hover:underline">github.com/LoboProgrammingg</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -960,214 +804,147 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0 text-center md:text-left">
-                    <a href="#" class="text-2xl font-bold flex items-center justify-center md:justify-start">
-                        <span class="gradient-text">Matheus Lobo</span>
-                    </a>
-                    <p class="text-gray-400 mt-2">Desenvolvedor Full Stack & IA</p>
-                    <div class="flex space-x-4 mt-4 justify-center md:justify-start">
-                        <a href="https://github.com/LoboProgrammingg" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
-                            <i class="fab fa-github text-xl"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/matheus-lobo-camara-developer" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
-                            <i class="fab fa-linkedin-in text-xl"></i>
-                        </a>
-                        <a href="mailto:matheusloboo2001@gmail.com" class="text-gray-400 hover:text-white transition duration-300">
-                            <i class="fas fa-envelope text-xl"></i>
-                        </a>
-                        <a href="https://wa.me/61405378120" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
-                            <i class="fab fa-whatsapp text-xl"></i>
-                        </a>
-                    </div>
+    <footer class="bg-gray-800 dark:bg-gray-950 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <h3 class="text-2xl font-bold gradient-text mb-4">Matheus Lobo Camara</h3>
+                    <p class="max-w-md">Desenvolvedor Full Stack especializado em Python, JavaScript e Machine Learning, criando soluções inovadoras com tecnologias modernas.</p>
                 </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                
+                <div class="grid grid-cols-2 gap-8">
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">Navegação</h3>
+                        <h4 class="text-lg font-semibold mb-4 text-white">Links Rápidos</h4>
                         <ul class="space-y-2">
-                            <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
-                            <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">Sobre</a></li>
-                            <li><a href="#experience" class="text-gray-400 hover:text-white transition duration-300">Experiência</a></li>
-                            <li><a href="#projects" class="text-gray-400 hover:text-white transition duration-300">Projetos</a></li>
-                            <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contato</a></li>
+                            <li><a href="#about" class="hover:text-white transition-colors">Sobre</a></li>
+                            <li><a href="#skills" class="hover:text-white transition-colors">Habilidades</a></li>
+                            <li><a href="#experience" class="hover:text-white transition-colors">Experiência</a></li>
+                            <li><a href="#projects" class="hover:text-white transition-colors">Projetos</a></li>
+                            <li><a href="#contact" class="hover:text-white transition-colors">Contato</a></li>
                         </ul>
                     </div>
+                    
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">Links Úteis</h3>
-                        <ul class="space-y-2">
-                            <li><a href="https://matheusprogrammer.pythonanywhere.com/" target="_blank" class="text-gray-400 hover:text-white transition duration-300">Sistema SGE</a></li>
-                            <li><a href="https://matheuslobocamara.pythonanywhere.com/" target="_blank" class="text-gray-400 hover:text-white transition duration-300">Venda de Carros</a></li>
-                            <li><a href="https://github.com/LoboProgrammingg" target="_blank" class="text-gray-400 hover:text-white transition duration-300">GitHub</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Blog (em breve)</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-span-2 md:col-span-1">
-                        <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
-                        <p class="text-gray-400 mb-4">Assine para receber atualizações sobre novos projetos.</p>
-                        <form class="flex">
-                            <input type="email" placeholder="Seu e-mail" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-900 w-full">
-                            <button type="submit" class="gradient-bg text-white px-4 py-2 rounded-r-lg">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
-                        </form>
+                        <h4 class="text-lg font-semibold mb-4 text-white">Redes Sociais</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://www.linkedin.com/in/matheus-lobo-camara-developer" target="_blank" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary-600 transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/LoboProgrammingg" target="_blank" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary-600 transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="mailto:matheusloboo2001@gmail.com" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary-600 transition-colors">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://wa.me/61405378120" target="_blank" class="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-primary-600 transition-colors">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Matheus Lobo Camara. Todos os direitos reservados.</p>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center md:text-left">
+                <p>&copy; 2023 Matheus Lobo Camara. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 hidden">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        // Initialize AOS (Animate On Scroll)
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            offset: 100
+        // Dark mode toggle
+        const toggle = document.getElementById('toggle');
+        const html = document.documentElement;
+        
+        // Check for saved user preference, if any, on load of the website
+        if (localStorage.getItem('darkMode') === 'true') {
+            html.classList.add('dark');
+            toggle.checked = true;
+        }
+        
+        toggle.addEventListener('change', function() {
+            if (this.checked) {
+                html.classList.add('dark');
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                html.classList.remove('dark');
+                localStorage.setItem('darkMode', 'false');
+            }
         });
         
         // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         
-        mobileMenuButton.addEventListener('click', function() {
+        menuBtn.addEventListener('click', function() {
             mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
         });
         
-        // Smooth scrolling for navigation links
+        // Toggle additional certificates
+        const toggleCertificates = document.getElementById('toggle-certificates');
+        const additionalCertificates = document.getElementById('additional-certificates');
+        
+        toggleCertificates.addEventListener('click', function() {
+            additionalCertificates.classList.toggle('hidden');
+            const icon = toggleCertificates.querySelector('i');
+            if (additionalCertificates.classList.contains('hidden')) {
+                toggleCertificates.innerHTML = '<i class="fas fa-certificate mr-2"></i> Ver todos os certificados';
+            } else {
+                toggleCertificates.innerHTML = '<i class="fas fa-times mr-2"></i> Ocultar certificados';
+            }
+        });
+        
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
                 
-                // Close mobile menu if open
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        const icon = menuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
             });
         });
         
-        // Update active nav link on scroll
+        // Highlight active nav link
         window.addEventListener('scroll', function() {
             const sections = document.querySelectorAll('section');
-            let current = '';
+            const navLinks = document.querySelectorAll('.nav-link');
             
+            let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 100)) {
+                if (pageYOffset >= sectionTop - 100) {
                     current = section.getAttribute('id');
                 }
             });
             
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active-nav');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active-nav');
+                    link.classList.add('active');
                 }
-            });
-            
-            // Show/hide back to top button
-            const backToTopButton = document.getElementById('back-to-top');
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.remove('hidden');
-            } else {
-                backToTopButton.classList.add('hidden');
-            }
-        });
-        
-        // Back to top button
-        document.getElementById('back-to-top').addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Form submission with animation
-        const contactForm = document.getElementById('contact-form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const submitText = document.getElementById('submit-text');
-                const submitIcon = document.getElementById('submit-icon');
-                const loadingIcon = document.getElementById('loading-icon');
-                const successMessage = document.getElementById('success-message');
-                const errorMessage = document.getElementById('error-message');
-                
-                // Show loading state
-                submitText.textContent = 'Enviando...';
-                submitIcon.classList.add('hidden');
-                loadingIcon.classList.remove('hidden');
-                
-                // Simulate form submission (in a real scenario, you would use AJAX)
-                setTimeout(function() {
-                    // Hide loading state
-                    submitText.textContent = 'Enviar Mensagem';
-                    submitIcon.classList.remove('hidden');
-                    loadingIcon.classList.add('hidden');
-                    
-                    // Show success message
-                    successMessage.classList.remove('hidden');
-                    errorMessage.classList.add('hidden');
-                    
-                    // Reset form
-                    contactForm.reset();
-                    
-                    // Hide success message after 5 seconds
-                    setTimeout(function() {
-                        successMessage.classList.add('hidden');
-                    }, 5000);
-                }, 2000);
-            });
-        }
-        
-        // Typewriter effect
-        function setupTypewriter() {
-            const typewriterElement = document.querySelector('.typewriter');
-            if (typewriterElement) {
-                const text = typewriterElement.textContent;
-                typewriterElement.textContent = '';
-                typewriterElement.style.animation = 'none';
-                
-                setTimeout(() => {
-                    typewriterElement.textContent = text;
-                    typewriterElement.style.animation = 'typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite';
-                }, 100);
-            }
-        }
-        
-        // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            setupTypewriter();
-            
-            // Generate random session ID for demo
-            const sessionId = 'ML-' + Math.random().toString(36).substr(2, 8).toUpperCase();
-            const sessionElement = document.createElement('div');
-            sessionElement.className = 'fixed bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow text-sm text-gray-700 z-50';
-            sessionElement.innerHTML = `Sessão: <span class="font-mono text-blue-600">${sessionId}</span>`;
-            document.body.appendChild(sessionElement);
-            
-            // Floating animation for tech icons
-            const techIcons = document.querySelectorAll('.tech-icon');
-            techIcons.forEach((icon, index) => {
-                icon.style.animationDelay = `${index * 0.1}s`;
-                icon.classList.add('floating');
             });
         });
     </script>
