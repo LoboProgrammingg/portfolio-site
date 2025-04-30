@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matheus Lobo Camara | Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --primary: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary: #1e40af;
+            --accent: #10b981;
+            --accent-dark: #059669;
+            --dark: #111827;
+            --darker: #0f172a;
+            --light: #f9fafb;
+            --lighter: #f8fafc;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--lighter);
+            color: var(--dark);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        .section {
+            scroll-margin-top: 100px;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 4px solid var(--light);
+            z-index: 10;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: -29px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--primary);
+        }
+        
+        .skill-bar {
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active-nav::after {
+            width: 100%;
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .tech-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .tech-icon:hover {
+            transform: scale(1.2);
+        }
+        
+        .glow {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 3px solid var(--primary);
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: 0.15em;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary) }
+        }
+        
+        .wave {
+            animation: wave 2s infinite;
+            transform-origin: 70% 70%;
+            display: inline-block;
+        }
+        
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            10% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            30% { transform: rotate(14deg); }
+            40% { transform: rotate(-4deg); }
+            50% { transform: rotate(10deg); }
+            60% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .bg-pattern {
+            background-image: radial-gradient(rgba(59, 130, 246, 0.1) 2px, transparent 2px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-md z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold flex items-center">
+                    <span class="gradient-text">ML</span>
+                    <span class="ml-2 hidden sm:inline-block">Matheus Lobo</span>
+                </a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link active-nav text-gray-800 font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Sobre</a>
+                    <a href="#experience" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Experiência</a>
+                    <a href="#projects" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Projetos</a>
+                    <a href="#contact" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Contato</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                    <i class="fas fa-bars text-gray-800 text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="nav-link active-nav text-gray-800 font-medium">Home</a>
+                    <a href="#about" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Sobre</a>
+                    <a href="#experience" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Experiência</a>
+                    <a href="#projects" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Projetos</a>
+                    <a href="#contact" class="nav-link text-gray-600 hover:text-gray-800 font-medium">Contato</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="section min-h-screen flex items-center pt-20 bg-gradient-to-br from-blue-50 to-green-50">
+        <div class="container mx-auto px-6 py-16 md:py-24">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-12 md:mb-0" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                        Olá, eu sou <span class="gradient-text">Matheus Lobo</span> <span class="wave">👋</span>
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl text-gray-600 mb-6">
+                        <span class="typewriter">Desenvolvedor Full Stack & IA</span>
+                    </h2>
+                    <p class="text-gray-600 mb-8 max-w-lg">
+                        Transformando ideias em realidade através de código limpo e soluções inovadoras. 
+                        Apaixonado por criar sistemas inteligentes que geram valor real.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="gradient-bg hover:bg-gradient-to-r hover:from-blue-600 hover:to-green-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300 shadow-lg hover:shadow-xl">
+                            Contate-me <i class="fas fa-paper-plane ml-2"></i>
+                        </a>
+                        <a href="#projects" class="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition duration-300 shadow hover:shadow-md">
+                            Meus Projetos <i class="fas fa-arrow-down ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="mt-8 flex space-x-6">
+                        <a href="https://github.com/LoboProgrammingg" target="_blank" class="text-gray-600 hover:text-blue-600 transition duration-300 text-2xl">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/matheus-lobo-camara-developer" target="_blank" class="text-gray-600 hover:text-blue-600 transition duration-300 text-2xl">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="mailto:matheusloboo2001@gmail.com" class="text-gray-600 hover:text-blue-600 transition duration-300 text-2xl">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://wa.me/61405378120" target="_blank" class="text-gray-600 hover:text-blue-600 transition duration-300 text-2xl">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-blue-100 to-green-100 rounded-full overflow-hidden border-4 border-white shadow-2xl floating">
+                            <!-- Placeholder for profile image with pattern -->
+                            <div class="w-full h-full bg-pattern flex items-center justify-center">
+                                <div class="text-center p-6">
+                                    <i class="fas fa-code text-6xl text-blue-500 mb-4"></i>
+                                    <p class="text-blue-600 font-bold">Full Stack Developer</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-5 -right-5 bg-white p-4 rounded-lg shadow-lg glow">
+                            <div class="flex items-center">
+                                <div class="gradient-bg p-2 rounded-full mr-3">
+                                    <i class="fas fa-code text-white"></i>
+                                </div>
+                                <div>
+                                    <p class="font-bold">3+ Anos</p>
+                                    <p class="text-sm text-gray-500">Experiência</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -top-5 -left-5 bg-white p-3 rounded-full shadow-lg">
+                            <div class="gradient-bg p-2 rounded-full">
+                                <i class="fas fa-star text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2">
+            <a href="#about" class="animate-bounce block w-8 h-8 border-4 border-blue-500 rounded-full">
+                <span class="block w-2 h-2 bg-blue-500 rounded-full mt-2 mx-auto"></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Sobre <span class="gradient-text">Mim</span></h2>
+                <div class="w-20 h-1 gradient-bg mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold mb-4">Minha Jornada</h3>
+                    <p class="text-gray-600 mb-6">
+                        Minha jornada na tecnologia começou em 2021 na Tel Telecomunicações, onde tive meu primeiro contato com análise de dados. 
+                        Desde então, venho me especializando em desenvolvimento Full Stack e Inteligência Artificial.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Em 2023, fiz um intercâmbio na Austrália onde aprimorei meu inglês e trabalhei com Node.js e Machine Learning. 
+                        Atualmente sou estagiário na MTI, desenvolvendo soluções inovadoras com IA.
+                    </p>
+                    <p class="text-gray-600 mb-8">
+                        Estou cursando Engenharia de Software e sou apaixonado por criar soluções que geram valor real através da tecnologia.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="gradient-bg hover:bg-gradient-to-r hover:from-blue-600 hover:to-green-600 text-white px-6 py-3 rounded-lg font-medium transition duration-300 shadow-lg">
+                            Baixar CV <i class="fas fa-download ml-2"></i>
+                        </a>
+                        <a href="#experience" class="border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition duration-300 shadow">
+                            Minha Experiência <i class="fas fa-briefcase ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-6">Minhas Habilidades</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Python & Django</span>
+                                <span class="text-gray-600">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">JavaScript & React</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Machine Learning</span>
+                                <span class="text-gray-600">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Banco de Dados</span>
+                                <span class="text-gray-600">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium">Cloud & DevOps</span>
+                                <span class="text-gray-600">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-bold mt-12 mb-6">Tecnologias</h3>
+                    <div class="grid grid-cols-4 md:grid-cols-6 gap-4">
+                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="Python">
+                            <i class="fab fa-python text-3xl text-blue-600"></i>
+                        </div>
+                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="JavaScript">
+                            <i class="fab fa-js text-3xl text-yellow-500"></i>
+                        </div>
+                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="Django">
+                            <i class="fab fa-python text-3xl text-green-600"></i>
+                        </div>
+                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="React">
+                            <i class="fab fa-react text-3xl text-blue-400"></i>
+                        </div>
+                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="Node.js">
+                            <i class="fab fa-node-js text-3xl text-green-500"></i>
+                        </div>
+                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="Git">
+                            <i class="fab fa-git-alt text-3xl text-orange-600"></i>
+                        </div>
+                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="AWS">
+                            <i class="fab fa-aws text-3xl text-orange-700"></i>
+                        </div>
+                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="Docker">
+                            <i class="fab fa-docker text-3xl text-blue-500"></i>
+                        </div>
+                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="Linux">
+                            <i class="fab fa-linux text-3xl text-black"></i>
+                        </div>
+                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="HTML5">
+                            <i class="fab fa-html5 text-3xl text-orange-500"></i>
+                        </div>
+                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="CSS3">
+                            <i class="fab fa-css3-alt text-3xl text-blue-500"></i>
+                        </div>
+                        <div class="tech-icon p-3 bg-gray-100 rounded-lg flex items-center justify-center" title="AI">
+                            <i class="fas fa-robot text-3xl text-purple-600"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience & Education Section -->
+    <section id="experience" class="section py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Experiência <span class="gradient-text">&</span> Educação</h2>
+                <div class="w-20 h-1 gradient-bg mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row">
+                <!-- Experience -->
+                <div class="lg:w-1/2 lg:pr-8 mb-12 lg:mb-0">
+                    <h3 class="text-2xl font-bold mb-8 flex items-center" data-aos="fade-right">
+                        <i class="fas fa-briefcase mr-3 text-blue-600"></i> Experiência Profissional
+                    </h3>
+                    
+                    <div class="relative pl-12 timeline">
+                        <!-- MTI -->
+                        <div class="relative mb-8 timeline-item" data-aos="fade-up">
+                            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="font-bold text-lg">MTI - Estagiário</h4>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Atual</span>
+                                </div>
+                                <span class="text-gray-600 text-sm">Out 2024 - Presente</span>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                        <span>Desenvolvimento de layouts Canva</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                        <span>Otimização de processos Google</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                        <span>Implementação de IA para análise de documentos</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                        <span>Desenvolvimento de aplicativos mobile</span>
+                                    </li>
+                                </ul>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Python</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Django</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">IA</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">LangChain</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- INDUE -->
+                        <div class="relative mb-8 timeline-item" data-aos="fade-up">
+                            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                                <h4 class="font-bold text-lg mb-2">INDUE - Trainee</h4>
+                                <span class="text-gray-600 text-sm">Mar 2023 - Set 2023</span>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                        <span>Machine Learning para previsão de dados</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                        <span>Pandas para leitura de dados</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                        <span>Desenvolvimento com Node.js</span>
+                                    </li>
+                                </ul>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Node.js</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Python</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Pandas</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Machine Learning</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Tel Telecom -->
+                        <div class="relative timeline-item" data-aos="fade-up">
+                            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                                <h4 class="font-bold text-lg mb-2">Tel Telecomunicações - Estagiário</h4>
+                                <span class="text-gray-600 text-sm">Jan 2021 - Dez 2021</span>
+                                <ul class="mt-4 space-y-2 text-gray-600">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                        <span>Análise de dados com Pandas, NumPy e Matplotlib</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
+                                        <span>Otimização de processos e tomada de decisões</span>
+                                    </li>
+                                </ul>
+                                <div class="mt-4 flex flex-wrap gap-2">
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Python</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Pandas</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">NumPy</span>
+                                    <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Data Analysis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Education -->
+                <div class="lg:w-1/2 lg:pl-8">
+                    <h3 class="text-2xl font-bold mb-8 flex items-center" data-aos="fade-left">
+                        <i class="fas fa-graduation-cap mr-3 text-blue-600"></i> Educação
+                    </h3>
+                    
+                    <div class="relative pl-12 timeline">
+                        <!-- Ampli -->
+                        <div class="relative mb-8 timeline-item" data-aos="fade-up">
+                            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                                <h4 class="font-bold text-lg mb-2">Engenharia de Software</h4>
+                                <span class="text-gray-600 text-sm">Ampli - Cuiabá-MT</span>
+                                <p class="text-gray-600 mt-2">Conclusão prevista para 2027</p>
+                                <div class="mt-4 flex items-center">
+                                    <i class="fas fa-calendar-alt text-blue-500 mr-2"></i>
+                                    <span class="text-sm text-gray-600">2023 - 2027</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Canterbury -->
+                        <div class="relative mb-8 timeline-item" data-aos="fade-up">
+                            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                                <h4 class="font-bold text-lg mb-2">Advanced Programming</h4>
+                                <span class="text-gray-600 text-sm">Canterbury Technical Institute - Brisbane, Austrália</span>
+                                <p class="text-gray-600 mt-2">2023 (Não Finalizado)</p>
+                                <div class="mt-4 flex items-center">
+                                    <i class="fas fa-globe-americas text-blue-500 mr-2"></i>
+                                    <span class="text-sm text-gray-600">Intercâmbio</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Sun Pacific -->
+                        <div class="relative timeline-item" data-aos="fade-up">
+                            <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                                <h4 class="font-bold text-lg mb-2">Inglês - Upper-Intermediate</h4>
+                                <span class="text-gray-600 text-sm">Sun Pacific College - Brisbane, Austrália</span>
+                                <p class="text-gray-600 mt-2">2023</p>
+                                <div class="mt-4 flex items-center">
+                                    <i class="fas fa-language text-blue-500 mr-2"></i>
+                                    <span class="text-sm text-gray-600">Inglês Avançado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certifications -->
+                    <h3 class="text-2xl font-bold mt-12 mb-8 flex items-center" data-aos="fade-left">
+                        <i class="fas fa-certificate mr-3 text-blue-600"></i> Certificados
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4" data-aos="fade-up">
+                        <div class="bg-white p-4 rounded-lg shadow-md card-hover">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-university text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-2">HarvardX</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• CS50AI: AI with Python</li>
+                                        <li>• CS50x: Computer Science</li>
+                                        <li>• CS109xa: Machine Learning</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md card-hover">
+                            <div class="flex items-start">
+                                <div class="bg-green-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-robot text-green-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-2">Asimov</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Agents de IA com LangChain</li>
+                                        <li>• Engenharia de Prompts</li>
+                                        <li>• LLMs alternativas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md card-hover">
+                            <div class="flex items-start">
+                                <div class="bg-yellow-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-graduation-cap text-yellow-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-2">Udemy</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• Python 3 do básico ao avançado</li>
+                                        <li>• 100 days of code</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md card-hover">
+                            <div class="flex items-start">
+                                <div class="bg-purple-100 p-2 rounded-full mr-3">
+                                    <i class="fas fa-certificate text-purple-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-2">Outros</h4>
+                                    <ul class="text-sm text-gray-600 space-y-1">
+                                        <li>• IA Master (Kiwify)</li>
+                                        <li>• Django Master (Kiwify)</li>
+                                        <li>• Data Visualization (IBM)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Meus <span class="gradient-text">Projetos</span></h2>
+                <div class="w-20 h-1 gradient-bg mx-auto rounded-full"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">
+                    Alguns dos projetos que desenvolvi, combinando criatividade, tecnologia e boas práticas de desenvolvimento.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- SGE -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100" data-aos="zoom-in">
+                    <div class="h-48 bg-gradient-to-r from-blue-100 to-blue-200 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-blue-500 opacity-10"></div>
+                        <div class="relative z-10 text-center p-4">
+                            <i class="fas fa-boxes text-6xl text-blue-600 mb-4"></i>
+                            <h3 class="text-xl font-bold text-blue-800">Sistema de Gestão</h3>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-blue-500"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Sistema de Gestão de Estoque</h3>
+                        <p class="text-gray-600 mb-4">
+                            Sistema completo para controle de vendas com dashboards e automações.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Django</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">Bootstrap</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <a href="https://matheusprogrammer.pythonanywhere.com/" target="_blank" class="text-blue-600 hover:text-blue-800 font-medium flex items-center">
+                                Ver Projeto <i class="fas fa-external-link-alt ml-2"></i>
+                            </a>
+                            <span class="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">
+                                lobo / sarutobi12
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Car Sales -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="h-48 bg-gradient-to-r from-green-100 to-green-200 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-green-500 opacity-10"></div>
+                        <div class="relative z-10 text-center p-4">
+                            <i class="fas fa-car text-6xl text-green-600 mb-4"></i>
+                            <h3 class="text-xl font-bold text-green-800">Venda de Carros</h3>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-green-500"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Sistema de Venda de Carros</h3>
+                        <p class="text-gray-600 mb-4">
+                            Plataforma com IA para gerar descrições automáticas de veículos.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Django</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">AI</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">Mobile</span>
+                        </div>
+                        <a href="https://matheuslobocamara.pythonanywhere.com/" target="_blank" class="text-green-600 hover:text-green-800 font-medium flex items-center">
+                            Ver Projeto <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- MTI AI -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="h-48 bg-gradient-to-r from-purple-100 to-purple-200 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-purple-500 opacity-10"></div>
+                        <div class="relative z-10 text-center p-4">
+                            <i class="fas fa-robot text-6xl text-purple-600 mb-4"></i>
+                            <h3 class="text-xl font-bold text-purple-800">IA para Treinamento</h3>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-purple-500"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">IA para Treinamento (MTI)</h3>
+                        <p class="text-gray-600 mb-4">
+                            Assistente de IA baseado em fine-tuning para treinar novos funcionários.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">LangChain</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">LLM</span>
+                        </div>
+                        <p class="text-sm text-gray-500 italic">
+                            Projeto interno da MTI (demonstração sob consulta)
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- More Projects -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100" data-aos="zoom-in">
+                    <div class="h-48 bg-gradient-to-r from-yellow-100 to-yellow-200 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-yellow-500 opacity-10"></div>
+                        <div class="relative z-10 text-center p-4">
+                            <i class="fab fa-github text-6xl text-yellow-600 mb-4"></i>
+                            <h3 class="text-xl font-bold text-yellow-800">Mais Projetos</h3>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-yellow-500"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Mais Projetos no GitHub</h3>
+                        <p class="text-gray-600 mb-4">
+                            Explore outros projetos no meu repositório GitHub.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">JavaScript</span>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">Diversos</span>
+                        </div>
+                        <a href="https://github.com/LoboProgrammingg" target="_blank" class="text-yellow-600 hover:text-yellow-800 font-medium flex items-center">
+                            Visitar GitHub <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- AI Projects -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="h-48 bg-gradient-to-r from-pink-100 to-pink-200 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-pink-500 opacity-10"></div>
+                        <div class="relative z-10 text-center p-4">
+                            <i class="fas fa-brain text-6xl text-pink-600 mb-4"></i>
+                            <h3 class="text-xl font-bold text-pink-800">Projetos de IA</h3>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-pink-500"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Projetos de Inteligência Artificial</h3>
+                        <p class="text-gray-600 mb-4">
+                            Diversos projetos envolvendo Machine Learning e LLMs.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full">Python</span>
+                            <span class="bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full">TensorFlow</span>
+                            <span class="bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full">LLMs</span>
+                        </div>
+                        <a href="https://github.com/LoboProgrammingg?tab=repositories" target="_blank" class="text-pink-600 hover:text-pink-800 font-medium flex items-center">
+                            Ver Projetos <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Coming Soon -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover border border-gray-100" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="h-48 bg-gradient-to-r from-indigo-100 to-indigo-200 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-indigo-500 opacity-10"></div>
+                        <div class="relative z-10 text-center p-4">
+                            <i class="fas fa-lightbulb text-6xl text-indigo-600 mb-4"></i>
+                            <h3 class="text-xl font-bold text-indigo-800">Novos Projetos</h3>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 h-1 bg-indigo-500"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Em Desenvolvimento</h3>
+                        <p class="text-gray-600 mb-4">
+                            Novos projetos estão sendo desenvolvidos e em breve estarão disponíveis.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">React</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Node.js</span>
+                            <span class="bg-indigo-100 text-indigo-800 text-xs px-3 py-1 rounded-full">Next.js</span>
+                        </div>
+                        <p class="text-sm text-gray-500 italic">
+                            Em breve mais novidades!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section py-20 bg-gradient-to-br from-blue-50 to-green-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Entre em <span class="gradient-text">Contato</span></h2>
+                <div class="w-20 h-1 gradient-bg mx-auto rounded-full"></div>
+                <p class="text-gray-600 max-w-2xl mx-auto mt-4">
+                    Estou disponível para oportunidades de trabalho, projetos freelancer ou apenas para bater um papo sobre tecnologia!
+                </p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row bg-white rounded-xl shadow-lg overflow-hidden" data-aos="fade-up">
+                <div class="lg:w-1/2 p-8 md:p-12 bg-gradient-to-br from-blue-500 to-green-500 text-white">
+                    <h3 class="text-2xl font-bold mb-6">Informações de Contato</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start glass p-4 rounded-lg">
+                            <div class="bg-white/20 p-3 rounded-full mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">E-mail</h4>
+                                <a href="mailto:matheusloboo2001@gmail.com" class="hover:underline">matheusloboo2001@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start glass p-4 rounded-lg">
+                            <div class="bg-white/20 p-3 rounded-full mr-4">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">Telefone</h4>
+                                <a href="tel:+5565992540370" class="hover:underline">+55 (65) 99254-0370</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start glass p-4 rounded-lg">
+                            <div class="bg-white/20 p-3 rounded-full mr-4">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">WhatsApp</h4>
+                                <a href="https://wa.me/61405378120" target="_blank" class="hover:underline">+61 405 378 120</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start glass p-4 rounded-lg">
+                            <div class="bg-white/20 p-3 rounded-full mr-4">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/matheus-lobo-camara-developer" target="_blank" class="hover:underline">linkedin.com/in/matheus-lobo-camara-developer</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start glass p-4 rounded-lg">
+                            <div class="bg-white/20 p-3 rounded-full mr-4">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-1">GitHub</h4>
+                                <a href="https://github.com/LoboProgrammingg" target="_blank" class="hover:underline">github.com/LoboProgrammingg</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4">Disponibilidade</h4>
+                        <div class="flex items-center">
+                            <div class="h-3 w-3 bg-green-400 rounded-full mr-2"></div>
+                            <span>Disponível para novas oportunidades</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 p-8 md:p-12">
+                    <h3 class="text-2xl font-bold mb-6">Envie uma Mensagem</h3>
+                    <form id="contact-form" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-2">Nome</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 font-medium mb-2">E-mail</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Assunto</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Mensagem</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" required></textarea>
+                        </div>
+                        <button type="submit" class="gradient-bg hover:bg-gradient-to-r hover:from-blue-600 hover:to-green-600 text-white px-6 py-3 rounded-lg font-medium w-full transition duration-300 shadow-lg hover:shadow-xl flex items-center justify-center">
+                            <span id="submit-text">Enviar Mensagem</span>
+                            <i id="submit-icon" class="fas fa-paper-plane ml-2"></i>
+                            <i id="loading-icon" class="fas fa-spinner fa-spin ml-2 hidden"></i>
+                        </button>
+                    </form>
+                    
+                    <div id="success-message" class="hidden mt-4 p-4 bg-green-100 text-green-800 rounded-lg">
+                        <i class="fas fa-check-circle mr-2"></i> Mensagem enviada com sucesso! Entrarei em contato em breve.
+                    </div>
+                    
+                    <div id="error-message" class="hidden mt-4 p-4 bg-red-100 text-red-800 rounded-lg">
+                        <i class="fas fa-exclamation-circle mr-2"></i> Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <a href="#" class="text-2xl font-bold flex items-center justify-center md:justify-start">
+                        <span class="gradient-text">Matheus Lobo</span>
+                    </a>
+                    <p class="text-gray-400 mt-2">Desenvolvedor Full Stack & IA</p>
+                    <div class="flex space-x-4 mt-4 justify-center md:justify-start">
+                        <a href="https://github.com/LoboProgrammingg" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/matheus-lobo-camara-developer" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                        <a href="mailto:matheusloboo2001@gmail.com" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </a>
+                        <a href="https://wa.me/61405378120" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Navegação</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#home" class="text-gray-400 hover:text-white transition duration-300">Home</a></li>
+                            <li><a href="#about" class="text-gray-400 hover:text-white transition duration-300">Sobre</a></li>
+                            <li><a href="#experience" class="text-gray-400 hover:text-white transition duration-300">Experiência</a></li>
+                            <li><a href="#projects" class="text-gray-400 hover:text-white transition duration-300">Projetos</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white transition duration-300">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-4">Links Úteis</h3>
+                        <ul class="space-y-2">
+                            <li><a href="https://matheusprogrammer.pythonanywhere.com/" target="_blank" class="text-gray-400 hover:text-white transition duration-300">Sistema SGE</a></li>
+                            <li><a href="https://matheuslobocamara.pythonanywhere.com/" target="_blank" class="text-gray-400 hover:text-white transition duration-300">Venda de Carros</a></li>
+                            <li><a href="https://github.com/LoboProgrammingg" target="_blank" class="text-gray-400 hover:text-white transition duration-300">GitHub</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Blog (em breve)</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-span-2 md:col-span-1">
+                        <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+                        <p class="text-gray-400 mb-4">Assine para receber atualizações sobre novos projetos.</p>
+                        <form class="flex">
+                            <input type="email" placeholder="Seu e-mail" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-900 w-full">
+                            <button type="submit" class="gradient-bg text-white px-4 py-2 rounded-r-lg">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Matheus Lobo Camara. Todos os direitos reservados.</p>
+                <p class="mt-2 text-sm">Desenvolvido com <i class="fas fa-heart text-red-500"></i> e muito café <i class="fas fa-coffee text-brown-500"></i></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 hidden">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+            
+            // Show/hide back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('hidden');
+            } else {
+                backToTopButton.classList.add('hidden');
+            }
+        });
+        
+        // Back to top button
+        document.getElementById('back-to-top').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form submission with animation
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const submitText = document.getElementById('submit-text');
+                const submitIcon = document.getElementById('submit-icon');
+                const loadingIcon = document.getElementById('loading-icon');
+                const successMessage = document.getElementById('success-message');
+                const errorMessage = document.getElementById('error-message');
+                
+                // Show loading state
+                submitText.textContent = 'Enviando...';
+                submitIcon.classList.add('hidden');
+                loadingIcon.classList.remove('hidden');
+                
+                // Simulate form submission (in a real scenario, you would use AJAX)
+                setTimeout(function() {
+                    // Hide loading state
+                    submitText.textContent = 'Enviar Mensagem';
+                    submitIcon.classList.remove('hidden');
+                    loadingIcon.classList.add('hidden');
+                    
+                    // Show success message
+                    successMessage.classList.remove('hidden');
+                    errorMessage.classList.add('hidden');
+                    
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(function() {
+                        successMessage.classList.add('hidden');
+                    }, 5000);
+                }, 2000);
+            });
+        }
+        
+        // Typewriter effect
+        function setupTypewriter() {
+            const typewriterElement = document.querySelector('.typewriter');
+            if (typewriterElement) {
+                const text = typewriterElement.textContent;
+                typewriterElement.textContent = '';
+                typewriterElement.style.animation = 'none';
+                
+                setTimeout(() => {
+                    typewriterElement.textContent = text;
+                    typewriterElement.style.animation = 'typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite';
+                }, 100);
+            }
+        }
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setupTypewriter();
+            
+            // Generate random session ID for demo
+            const sessionId = 'ML-' + Math.random().toString(36).substr(2, 8).toUpperCase();
+            const sessionElement = document.createElement('div');
+            sessionElement.className = 'fixed bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow text-sm text-gray-700 z-50';
+            sessionElement.innerHTML = `Sessão: <span class="font-mono text-blue-600">${sessionId}</span>`;
+            document.body.appendChild(sessionElement);
+            
+            // Floating animation for tech icons
+            const techIcons = document.querySelectorAll('.tech-icon');
+            techIcons.forEach((icon, index) => {
+                icon.style.animationDelay = `${index * 0.1}s`;
+                icon.classList.add('floating');
+            });
+        });
+    </script>
+</body>
+</html>
