@@ -58,7 +58,7 @@
             -webkit-text-fill-color: transparent;
         }
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.25rem; /* Adjusted for mobile */
             font-weight: 800;
             margin-bottom: 2rem;
             text-align: center;
@@ -91,6 +91,7 @@
         .tab-button {
             transition: all 0.3s ease;
             border-bottom: 2px solid transparent;
+            white-space: nowrap; /* Prevent wrapping */
         }
         .tab-button.active, .tab-button:hover {
             color: #58a6ff;
@@ -107,7 +108,7 @@
     
     <!-- Header -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" @keydown.escape.window="mobileMenuOpen = false">
-        <div class="container mx-auto px-6 py-4">
+        <div class="container mx-auto px-4 sm:px-6 py-4">
             <div class="flex items-center justify-between">
                 <a href="#" class="text-2xl font-bold gradient-text">Matheus Lobo</a>
                 <nav class="hidden md:flex items-center space-x-8">
@@ -139,22 +140,22 @@
         <!-- Hero Section -->
         <section id="home" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
             <canvas id="hero-canvas"></canvas>
-            <div class="relative z-10 px-6">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight">
+            <div class="relative z-10 px-4 sm:px-6">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight">
                     Matheus Lobo Camara
                 </h1>
-                <p class="mt-4 text-xl md:text-2xl gradient-text font-semibold h-8 md:h-10">
+                <p class="mt-4 text-lg sm:text-xl md:text-2xl gradient-text font-semibold h-8 md:h-10">
                     <span id="typed-subtitle"></span>
                 </p>
-                <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-400">
+                <p class="mt-6 max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-gray-400">
                     Construindo soluções web robustas e inteligentes, desde APIs eficientes com Python e Django até interfaces dinâmicas com React e automações com IA.
                 </p>
-                <div class="mt-10 flex justify-center items-center space-x-4">
-                    <a href="https://www.linkedin.com/in/matheus-lobo-camara-developer/" target="_blank" rel="noopener noreferrer" class="bg-accent text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="https://www.linkedin.com/in/matheus-lobo-camara-developer/" target="_blank" rel="noopener noreferrer" class="bg-accent text-white font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 w-full sm:w-auto">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                         <span>LinkedIn</span>
                     </a>
-                    <a href="https://github.com/LoboProgrammingg" target="_blank" rel="noopener noreferrer" class="bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 flex items-center space-x-2">
+                    <a href="https://github.com/LoboProgrammingg" target="_blank" rel="noopener noreferrer" class="bg-gray-700 text-white font-semibold px-6 py-3 rounded-lg hover:bg-gray-600 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 w-full sm:w-auto">
                         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.492.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.378.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
                         <span>GitHub</span>
                     </a>
@@ -164,7 +165,7 @@
 
         <!-- About Me Section -->
         <section id="sobre" class="py-20 md:py-32 bg-[#0d1117]">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <h2 class="section-title gradient-text parallax-title">Sobre Mim</h2>
                 <div class="max-w-4xl mx-auto text-center">
                     <p class="text-lg md:text-xl text-gray-300 leading-relaxed">
@@ -176,46 +177,46 @@
         
         <!-- Skills Section -->
         <section id="conhecimentos" class="py-20 md:py-32 bg-[#161b22]/80">
-            <div class="container mx-auto px-6" x-data="{ tab: 'backend' }">
+            <div class="container mx-auto px-4 sm:px-6" x-data="{ tab: 'backend' }">
                 <h2 class="section-title gradient-text parallax-title">Conhecimentos</h2>
                 
                 <!-- Tabs Navigation -->
-                <div class="flex justify-center mb-12 border-b border-gray-700">
-                    <button @click="tab = 'backend'" :class="{ 'active': tab === 'backend' }" class="tab-button px-6 py-3 font-semibold text-gray-400">Back-End</button>
-                    <button @click="tab = 'frontend'" :class="{ 'active': tab === 'frontend' }" class="tab-button px-6 py-3 font-semibold text-gray-400">Front-End</button>
-                    <button @click="tab = 'database'" :class="{ 'active': tab === 'database' }" class="tab-button px-6 py-3 font-semibold text-gray-400">Banco de Dados</button>
-                    <button @click="tab = 'devops_ai'" :class="{ 'active': tab === 'devops_ai' }" class="tab-button px-6 py-3 font-semibold text-gray-400">DevOps & IA</button>
+                <div class="flex justify-start md:justify-center mb-12 border-b border-gray-700 overflow-x-auto">
+                    <button @click="tab = 'backend'" :class="{ 'active': tab === 'backend' }" class="tab-button px-4 py-3 font-semibold text-gray-400">Back-End</button>
+                    <button @click="tab = 'frontend'" :class="{ 'active': tab === 'frontend' }" class="tab-button px-4 py-3 font-semibold text-gray-400">Front-End</button>
+                    <button @click="tab = 'database'" :class="{ 'active': tab === 'database' }" class="tab-button px-4 py-3 font-semibold text-gray-400">Banco de Dados</button>
+                    <button @click="tab = 'devops_ai'" :class="{ 'active': tab === 'devops_ai' }" class="tab-button px-4 py-3 font-semibold text-gray-400">DevOps & IA</button>
                 </div>
 
                 <!-- Tabs Content -->
-                <div class="max-w-4xl mx-auto">
+                <div class="max-w-4xl mx-auto min-h-[12rem]">
                     <!-- Backend Tab -->
-                    <div x-show="tab === 'backend'" x-transition class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" class="h-16 w-16" alt="Python Icon"/><span class="mt-4 font-semibold text-white">Python</span></div>
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" class="h-16 w-16" alt="Django Icon"/><span class="mt-4 font-semibold text-white">Django</span></div>
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" class="h-16 w-16" alt="FastAPI Icon"/><span class="mt-4 font-semibold text-white">FastAPI</span></div>
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" class="h-16 w-16" alt="Node.js Icon"/><span class="mt-4 font-semibold text-white">Node.js</span></div>
+                    <div x-show="tab === 'backend'" x-transition class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-8">
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" class="h-16 w-16" alt="Python Icon"/><span class="mt-4 font-semibold text-white text-center">Python</span></div>
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/django/django-plain.svg" class="h-16 w-16" alt="Django Icon"/><span class="mt-4 font-semibold text-white text-center">Django</span></div>
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg" class="h-16 w-16" alt="FastAPI Icon"/><span class="mt-4 font-semibold text-white text-center">FastAPI</span></div>
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" class="h-16 w-16" alt="Node.js Icon"/><span class="mt-4 font-semibold text-white text-center">Node.js</span></div>
                     </div>
                     <!-- Frontend Tab -->
-                    <div x-show="tab === 'frontend'" x-transition class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" class="h-16 w-16" alt="HTML5 Icon"/><span class="mt-4 font-semibold text-white">HTML5</span></div>
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" class="h-16 w-16" alt="CSS3 Icon"/><span class="mt-4 font-semibold text-white">CSS3</span></div>
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" class="h-16 w-16" alt="JavaScript Icon"/><span class="mt-4 font-semibold text-white">JavaScript</span></div>
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" class="h-16 w-16" alt="TailwindCSS Icon"/><span class="mt-4 font-semibold text-white">Tailwind</span></div>
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" class="h-16 w-16" alt="React Icon"/><span class="mt-4 font-semibold text-white">React</span></div>
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" class="h-16 w-16" alt="Vue.js Icon"/><span class="mt-4 font-semibold text-white">Vue.js</span></div>
+                    <div x-show="tab === 'frontend'" x-transition class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" class="h-16 w-16" alt="HTML5 Icon"/><span class="mt-4 font-semibold text-white text-center">HTML5</span></div>
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" class="h-16 w-16" alt="CSS3 Icon"/><span class="mt-4 font-semibold text-white text-center">CSS3</span></div>
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" class="h-16 w-16" alt="JavaScript Icon"/><span class="mt-4 font-semibold text-white text-center">JavaScript</span></div>
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" class="h-16 w-16" alt="TailwindCSS Icon"/><span class="mt-4 font-semibold text-white text-center">Tailwind</span></div>
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" class="h-16 w-16" alt="React Icon"/><span class="mt-4 font-semibold text-white text-center">React</span></div>
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg" class="h-16 w-16" alt="Vue.js Icon"/><span class="mt-4 font-semibold text-white text-center">Vue.js</span></div>
                     </div>
                     <!-- Database Tab -->
-                    <div x-show="tab === 'database'" x-transition class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" class="h-16 w-16" alt="PostgreSQL Icon"/><span class="mt-4 font-semibold text-white">PostgreSQL</span></div>
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" class="h-16 w-16" alt="MongoDB Icon"/><span class="mt-4 font-semibold text-white">MongoDB</span></div>
+                    <div x-show="tab === 'database'" x-transition class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-8">
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" class="h-16 w-16" alt="PostgreSQL Icon"/><span class="mt-4 font-semibold text-white text-center">PostgreSQL</span></div>
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg" class="h-16 w-16" alt="MongoDB Icon"/><span class="mt-4 font-semibold text-white text-center">MongoDB</span></div>
                     </div>
                     <!-- DevOps & AI Tab -->
-                    <div x-show="tab === 'devops_ai'" x-transition class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="h-16 w-16" alt="AWS Icon"/><span class="mt-4 font-semibold text-white">AWS</span></div>
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" class="h-16 w-16" alt="GCP Icon"/><span class="mt-4 font-semibold text-white">GCP</span></div>
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" class="h-16 w-16" alt="Docker Icon"/><span class="mt-4 font-semibold text-white">Docker</span></div>
-                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" class="h-16 w-16" alt="Git Icon"/><span class="mt-4 font-semibold text-white">Git</span></div>
+                    <div x-show="tab === 'devops_ai'" x-transition class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" class="h-16 w-16" alt="AWS Icon"/><span class="mt-4 font-semibold text-white text-center">AWS</span></div>
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg" class="h-16 w-16" alt="GCP Icon"/><span class="mt-4 font-semibold text-white text-center">GCP</span></div>
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" class="h-16 w-16" alt="Docker Icon"/><span class="mt-4 font-semibold text-white text-center">Docker</span></div>
+                        <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" class="h-16 w-16" alt="Git Icon"/><span class="mt-4 font-semibold text-white text-center">Git</span></div>
                         <div class="flex flex-col items-center p-4 glass-effect rounded-xl transition-all duration-300 card-glow"><svg class="h-16 w-16 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12C2 17.523 6.477 22 12 22C17.523 22 22 17.523 22 12C22 6.477 17.523 2 12 2ZM12 4C14.209 4 16 5.791 16 8C16 10.209 14.209 12 12 12C9.791 12 8 10.209 8 8C8 5.791 9.791 4 12 4ZM12 14C16.418 14 20 15.791 20 18V19C20 19.552 19.552 20 19 20H5C4.448 20 4 19.552 4 19V18C4 15.791 7.582 14 12 14Z" fill="currentColor"/></svg><span class="mt-4 font-semibold text-white text-center">IA Generativa</span></div>
                     </div>
                 </div>
@@ -224,7 +225,7 @@
 
         <!-- Experience Section -->
         <section id="experiencia" class="py-20 md:py-32 bg-[#0d1117]">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <h2 class="section-title gradient-text parallax-title">Experiência Profissional</h2>
                 <div id="timeline-container" class="max-w-3xl mx-auto relative timeline">
                     <div class="absolute left-4 md:left-1/2 top-0 h-full w-0.5 bg-gray-700"></div>
@@ -240,7 +241,7 @@
         
         <!-- Projects Section -->
         <section id="projetos" class="py-20 md:py-32 bg-[#161b22]/80">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <h2 class="section-title gradient-text parallax-title">Meus Projetos</h2>
                 <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Project Card 1 -->
@@ -300,7 +301,7 @@
 
         <!-- Courses & Education Section -->
         <section id="cursos" class="py-20 md:py-32 bg-[#0d1117]">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <h2 class="section-title gradient-text parallax-title">Educação e Cursos</h2>
                 <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
                     <div class="course-category">
@@ -328,7 +329,7 @@
 
         <!-- Languages Section -->
         <section id="idiomas" class="py-20 md:py-32 bg-[#161b22]/80">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <h2 class="section-title gradient-text parallax-title">Idiomas</h2>
                 <div class="max-w-4xl mx-auto space-y-8 language-bars">
                     <div><div class="flex justify-between mb-1"><span class="text-lg font-medium text-white">Português</span><span class="text-sm font-medium text-gray-400">Nativo</span></div><div class="w-full bg-gray-700 rounded-full h-2.5"><div class="bg-accent h-2.5 rounded-full" style="width: 100%"></div></div></div>
@@ -341,7 +342,7 @@
 
     <!-- Footer -->
     <footer id="contato" class="bg-gray-900/80 text-gray-400 py-16 relative z-10">
-        <div class="container mx-auto px-6 text-center">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
             <h2 class="text-3xl font-bold text-white mb-4">Conecte-se comigo</h2>
             <p class="max-w-2xl mx-auto mb-8">
                 Estou disponível para novas oportunidades. Encontre-me nas redes abaixo.
